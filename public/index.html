@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whimsical Weather!</title>
+  <!-- color palette
+       main blue: #06339B
+       dark blue: #2B069F
+       yellow:    #E7BF00
+       orange:    #E79A00
+  -->
+</head>
+<body ng-app="WhimsicalWeatherAngularApp" ng-controller="WeatherController">
+  <h1>Whimsical Weather :)</h1>
+
+  <h2>{{ helloMessage }}</h2>
+
+  <div ng-view></div>
+
+  <a href="#lookup">Lookup</a>
+  <!-- <a href="#test2">Test2</a> -->
+
+  <br />
+
+  <div id="item-list">
+      <div ng-repeat="item in list" style="float:left">
+           <div style="background-color: #06339B; color: #E7BF00; height: 200px; margin: 50px; padding: 100px 10px 50px 10px; width: 200px; text-align: center">
+               <span style="font-size: 2em;">
+                   {{ item.location }}
+               </span>
+               <br />
+               <span style="font-size: 3em;">
+                   {{ item.temperature }}&#176;F
+               </span>
+           </div>
+      <br />
+      </div>
+  </div>
+
+  <br /><br />
+
+  <!-- <ul class="block-list"></ul> -->
+ 
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+  <script src="client.js"></script>
+</body>
+
