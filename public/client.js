@@ -7,7 +7,7 @@ var app = angular.module('WhimsicalWeatherAngularApp', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
     .when('/lookup', {
-      template: '<div id="lookup-section" ng-controller="AddWeatherReportController"><input type="text" id="citystatezip" name="citystatezip" /><button id="locationbutton" ng-click="addLocation();">GO</button><br /><br /></div>',
+      template: '<div id="lookup-section" ng-controller="AddWeatherReportController"><input type="search" id="citystatezip" name="citystatezip" accesskey="t z 0" placeholder="93101" pattern="[0-9]{3}" title="A zip code composed of 5 digits" autofocus required /><button id="locationbutton" ng-click="addLocation();" tabindex="-1">GO</button><br /><br /></div>',
       // templateUrl : 'public/test1.html',
       controller  : 'AddWeatherReportController'
     })
@@ -20,6 +20,8 @@ app.config(function($routeProvider) {
 
 
 app.controller('AddWeatherReportController', function($scope, $http) {
+  // alert("Starting AddWeatherReportController ... ");
+  $("a#lookup-link").css("visibility", "hidden");
 
   $scope.addLocation= function() {
     $scope.data = {};
@@ -32,7 +34,7 @@ app.controller('AddWeatherReportController', function($scope, $http) {
         // alert("promise success");
         $scope.myDataTemp = data.temp;
         // alert("Found temp from server: " + $scope.myDataTemp);
-        document.getElementById("lookup-section").style.visibility = 'hidden';
+        /// document.getElementById("lookup-section").style.visibility = 'hidden';
         if($scope.myDataTemp != -1) {
             globalList.unshift({location: location, temperature: $scope.myDataTemp});
         } else {

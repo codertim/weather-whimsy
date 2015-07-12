@@ -17,17 +17,18 @@
 
   <div ng-view></div>
 
-  <a href="#lookup">Lookup</a>
+  <a id="lookup-link" href="#lookup">Lookup</a>
   <!-- <a href="#test2">Test2</a> -->
 
   <br />
 
   <div id="item-list">
       <div ng-repeat="item in list" style="float:left">
-           <div style="background-color: #06339B; color: #E7BF00; height: 200px; margin: 50px; padding: 100px 10px 50px 10px; width: 200px; text-align: center">
+           <div style="background-color: #06339B; color: #E7BF00; height: 200px; margin: 50px; padding: 100px 10px 50px 10px; width: 200px; text-align: center" draggable="true">
                <span style="font-size: 2em;">
                    {{ item.location }}
                </span>
+               <br />
                <br />
                <span style="font-size: 3em;">
                    {{ item.temperature }}&#176;F
