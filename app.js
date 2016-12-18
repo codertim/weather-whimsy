@@ -48,7 +48,7 @@ fs.readFile('./public/index.html', function(err, htmlFile) {
     // handling JavaScript files: http://ericsowell.com/blog/2011/5/6/serving-static-files-from-node-js
     if(extName === ".js") {
         console.log("Serving JavaScript request");
-        path.exists('./public' + pathname, function(doesExist) {
+        fs.exists('./public' + pathname, function(doesExist) {
             if(doesExist) {
                 fs.readFile('./public' + pathname, function(err, javascriptFile) {
                     response.writeHead(200, {'Content-Type': 'text/javascript'});
