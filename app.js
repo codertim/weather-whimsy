@@ -17,7 +17,6 @@ logger.on('error', function(message) {
 
 console.log("Starting ...");
 
-// lookupLocation('93101');   TODO: delete me
 
 
 function getWeatherApiCredentials(err, credentialsFile) {
@@ -84,16 +83,16 @@ fs.readFile('./public/index.html', function(err, htmlFile) {
         response.write(htmlFile);
         response.end();
     } else if(pathname === '/stuff') {
-        console.log("GOT HERE 4a");
+        console.log("path is stuff");
         response.writeHead(200);
         response.write("Hello Stuff!!!");
         response.end();
     } else if(pathname === '/locationLookupByZip') {
-        console.log("GOT HERE 41");
+        console.log("path is locationLookupbyZip");
         var queryData = url.parse(request.url, true).query;
-        console.log("GOT HERE 42 - queryData=" + queryData);
+        console.log("path is locationLookupbyZip - queryData=" + queryData);
         // response.writeHead(200, {'Content-Type': 'application/json'});
-        console.log("GOT HERE 43 - queryData.l=" + queryData.l);
+        console.log("path is locationLookupByZip - queryData.l=" + queryData.l);
         var tempForZip = zipLocationLookup(queryData.l);
         // response.write(JSON.stringify({temp: tempForZip}));
         // response.end();
@@ -131,7 +130,7 @@ function lookupLocation(zip) {
 
     var callback = function(response) {
         var str = '';
-        console.log("Startnig http request callback");
+        console.log("Starting http request callback");
 
         //another chunk of data has been recieved, so append it to `str`
         response.on('data', function (chunk) {
@@ -149,7 +148,7 @@ function lookupLocation(zip) {
                     // location found
                     console.log("\n\n\JSON response - temp=" + locationJson.current_observation.temp_f);
                     httpResponse.writeHead(200, {'Content-Type': 'application/json'});
-                    httpResponse.write(JSON.stringify({temp: locationJson.current_observation.temp_f}));
+                    httpResponse.write(JSON.stringify({temp: locationJson.current_observation.temp_f, city: locationJson.current_observation.display_location.city, state: locationJson.current_observation.display_location.state}));
                     httpResponse.end();
                 } else {
                     // location not found

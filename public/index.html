@@ -10,7 +10,7 @@
        orange:    #E79A00
   -->
 </head>
-<body ng-app="WhimsicalWeatherAngularApp" ng-controller="WeatherController">
+<body ng-app="WhimsicalWeatherAngularApp" ng-controller="WeatherController" style="background-color: #555;">
   <h1>Whimsical Weather :)</h1>
 
   <h2>{{ helloMessage }}</h2>
@@ -32,6 +32,11 @@
                <br />
                <span style="font-size: 3em;">
                    {{ item.temperature }}&#176;F
+               </span>
+               <br />
+               <br />
+               <span style="font-size: 1em;">
+                   <em>({{ item.city }}, {{ item.state }})</em>
                </span>
            </div>
       <br />

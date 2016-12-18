@@ -36,7 +36,7 @@ app.controller('AddWeatherReportController', function($scope, $http) {
         // alert("Found temp from server: " + $scope.myDataTemp);
         /// document.getElementById("lookup-section").style.visibility = 'hidden';
         if($scope.myDataTemp != -1) {
-            globalList.unshift({location: location, temperature: $scope.myDataTemp});
+            globalList.unshift({location: location, temperature: $scope.myDataTemp, city: data.city, state: data.state });
         } else {
             // alert("Not adding - value is -1");
         }
